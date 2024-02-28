@@ -162,9 +162,7 @@ return {
             },
           },
         },
-        ols = {
-          cmd = { '/Users/kakurega/Developer/oss/ols/ols' },
-        },
+        ols = {},
         lua_ls = {
           settings = {
             Lua = {
