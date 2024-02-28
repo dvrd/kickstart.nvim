@@ -162,7 +162,9 @@ return {
             },
           },
         },
-        ols = {},
+        ols = {
+          cmd = { os.getenv 'OSS_PATH' .. '/ols/ols' },
+        },
         lua_ls = {
           settings = {
             Lua = {
