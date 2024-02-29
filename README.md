@@ -2,13 +2,7 @@
 
 ## Introduction
 
-A starting point for Neovim that is:
-
-* Small
-* Single-file
-* Completely Documented
-
-**NOT** a Neovim distribution, but instead a starting point for your configuration.
+Personal modifications of kickstart.nvim
 
 ## Installation
 
@@ -48,7 +42,7 @@ Clone kickstart.nvim:
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/dvrd/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
@@ -58,18 +52,23 @@ git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HO
 If you're using `cmd.exe`:
 
 ```
-git clone https://github.com/nvim-lua/kickstart.nvim.git %userprofile%\AppData\Local\nvim\ 
+git clone https://github.com/dvrd/kickstart.nvim.git %userprofile%\AppData\Local\nvim\ 
 ```
 
 If you're using `powershell.exe`
 
 ```
-git clone https://github.com/nvim-lua/kickstart.nvim.git $env:USERPROFILE\AppData\Local\nvim\ 
+git clone https://github.com/dvrd/kickstart.nvim.git $env:USERPROFILE\AppData\Local\nvim\ 
 ```
 
 </details>
 
 ### Post Installation
+Move to `experimental` branch with all personal changes
+
+```sh
+git checkout -b experimental
+```
 
 Start Neovim
 
@@ -80,14 +79,17 @@ nvim
 That's it! Lazy will install all the plugins you have. Use `:Lazy` to view
 current plugin status.
 
-Read through the `init.lua` file in your configuration folder for more
+Read through the `init.lua` and follow the breadcrumbs to `lua/plugins/init.lua` file in your plugins configuration folder for more
 information about extending and exploring Neovim.
 
 ### Getting Started
 
 See [Effective Neovim: Instant IDE](https://youtu.be/stqUbv-5u2s), covering the
-previous version. Note: The install via init.lua is outdated, please follow the
-install instructions in this file instead. An updated video is coming soon.
+previous version of kickstart.nvim if you are curious. 
+
+> **Note**
+> The install via init.lua is outdated, please follow the
+> install instructions in this file instead. An updated video is coming soon.
 
 ### Recommended Steps
 
@@ -97,63 +99,6 @@ can install to your machine using the methods above.
 
 > **NOTE**  
 > Your fork's url will be something like this: `https://github.com/<your_github_username>/kickstart.nvim.git`
-
-#### Examples of adding popularly requested plugins
-
-<details>
-  <summary>Adding autopairs</summary>
-
-This will automatically install [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) and enable it on startup. For more information, see documentation for [lazy.nvim](https://github.com/folke/lazy.nvim).
-
-In the file: `lua/custom/plugins/autopairs.lua`, add:
-
-```lua
--- File: lua/custom/plugins/autopairs.lua
-
-return {
-  "windwp/nvim-autopairs",
-  -- Optional dependency
-  dependencies = { 'hrsh7th/nvim-cmp' },
-  config = function()
-    require("nvim-autopairs").setup {}
-    -- If you want to automatically add `(` after selecting a function or method
-    local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-    local cmp = require('cmp')
-    cmp.event:on(
-      'confirm_done',
-      cmp_autopairs.on_confirm_done()
-    )
-  end,
-}
-```
-
-</details>
-<details>
-  <summary>Adding a file tree plugin</summary>
-
-This will install the tree plugin and add the command `:Neotree` for you. You can explore the documentation at [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) for more information.
-
-In the file: `lua/custom/plugins/filetree.lua`, add:
-
-```lua
--- Unless you are still migrating, remove the deprecated commands from v1.x
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  version = "*",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-  },
-  config = function ()
-    require('neo-tree').setup {}
-  end,
-}
-```
-
-</details>
 
 ### FAQ
 
