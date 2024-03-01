@@ -151,6 +151,9 @@ return {
             '--enable-debug-log',
           },
         },
+        bashls = {
+          filetypes = { 'sh', 'zsh', 'bash' },
+        },
         gopls = {},
         pyright = {},
         rust_analyzer = {

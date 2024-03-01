@@ -14,6 +14,7 @@ return {
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
         javascript = { { 'eslint_d', 'prettierd', 'prettier' } },
+        shell = { 'shfmt' },
       },
     },
   },
