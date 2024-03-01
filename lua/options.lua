@@ -1,22 +1,22 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
 
 -- Make relative line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
+-- Allow line wrapping
+vim.opt.wrap = false
+
+-- Enable mouse mode can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
--- Don't show the mode, since it's already in status line
+-- Don't show the mode since it's already in status line
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
@@ -51,19 +51,22 @@ vim.opt.splitbelow = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
--- Preview substitutions live, as you type!
+-- Preview substitutions live as you type!
 vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 1000
+vim.opt.scrolloff = 999
 
--- Set highlight on search, but clear on pressing <Esc> in normal mode
+-- Set highlight on search but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
 -- Set the width of autoindent
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+-- Set virtual edit for visual block mode
+vim.opt.virtualedit = 'block'
