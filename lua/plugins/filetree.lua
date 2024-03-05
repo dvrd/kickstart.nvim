@@ -10,5 +10,6 @@ return {
   },
   config = function()
     require('neo-tree').setup {}
+    vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle right<cr>', { desc = '[E]xplorer' })
   end,
 }
