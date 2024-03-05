@@ -24,6 +24,7 @@ return {
       --  If you already have a Nerd Font, or terminal set up with fallback fonts
       --  you can enable this
       { 'nvim-tree/nvim-web-devicons' },
+      'nvim-telescope/telescope-media-files.nvim',
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -71,6 +72,7 @@ return {
       -- Enable telescope extensions, if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'media_files')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
