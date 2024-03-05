@@ -65,8 +65,9 @@ vim.opt.hlsearch = true
 
 -- Set the width of autoindent
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
 
 -- Set virtual edit for visual block mode
 vim.opt.virtualedit = 'block'
