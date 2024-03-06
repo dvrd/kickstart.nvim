@@ -67,7 +67,7 @@ vim.opt.hlsearch = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.smartindent = true
+-- vim.opt.smartindent = true
 
 -- Set virtual edit for visual block mode
 vim.opt.virtualedit = 'block'
