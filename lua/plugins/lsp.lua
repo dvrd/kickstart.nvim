@@ -130,6 +130,7 @@ return {
         clangd = {
           cmd = {
             '/opt/homebrew/opt/llvm/bin/clangd',
+            '--offset-encoding=utf-16',
             '--background-index',
             '--pch-storage=memory',
             '--all-scopes-completion',
