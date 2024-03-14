@@ -1,6 +1,6 @@
 return {
   {
-    dir = '$PROJ_PATH/kukenan.nvim',
+    dir = os.getenv 'PROJ_PATH' .. '/kukenan.nvim',
     lazy = false,
     priority = 1000,
     config = function()
