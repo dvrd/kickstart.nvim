@@ -11,14 +11,10 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
-        javascript = { { 'eslint_d', 'prettierd', 'prettier' } },
+        javascript = { 'eslint_d', { 'prettierd', 'prettier' } },
         zsh = { 'shfmt' },
-        -- Use the "*" filetype to run formatters on all filetypes.
         ['*'] = { 'codespell' },
-        -- Use the "_" filetype to run formatters on filetypes that don't
-        -- have other formatters configured.
         ['_'] = { 'trim_whitespace' },
       },
     },
