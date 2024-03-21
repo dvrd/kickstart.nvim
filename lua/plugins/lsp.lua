@@ -84,9 +84,9 @@ return {
             })
           end
 
-          if vim.lsp.inlay_hint then
-            vim.lsp.inlay_hint.enable(event.buf, true)
-          end
+          -- if vim.lsp.inlay_hint then
+          --   vim.lsp.inlay_hint.enable(event.buf, true)
+          -- end
         end,
       })
 
