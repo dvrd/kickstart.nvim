@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'kukenan'
+      vim.cmd.hi 'Comment gui=none'
     end,
   },
 }

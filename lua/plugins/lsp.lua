@@ -185,6 +185,7 @@ return {
           },
         },
         tsserver = {
+          filetypes = { 'typescript', 'typescriptreact', 'typescript.tsx' },
           init_options = {
             preferences = {
               includeInlayParameterNameHints = 'all',

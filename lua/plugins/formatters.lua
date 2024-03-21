@@ -13,6 +13,7 @@ return {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         javascript = { 'eslint_d', { 'prettierd', 'prettier' } },
+        vue = { 'eslint_d' },
         zsh = { 'shfmt' },
         ['*'] = { 'codespell' },
         ['_'] = { 'trim_whitespace' },
