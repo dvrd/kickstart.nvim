@@ -9,9 +9,14 @@ return {
           name = 'Gleam',
         },
         ['odin'] = {
-          icon = '⭘',
+          icon = '󰠠 ',
           color = '#3982d2',
           name = 'Odin',
+        },
+        ['pkg'] = {
+          icon = '󰏖',
+          color = '#ffdd63',
+          name = 'Octo',
         },
       },
     },
