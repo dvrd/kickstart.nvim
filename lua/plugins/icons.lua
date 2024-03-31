@@ -18,6 +18,11 @@ return {
           color = '#ffdd63',
           name = 'Octo',
         },
+        ['adoc'] = {
+          icon = '󰬈',
+          color = '#e40046',
+          name = 'AsciiDoc',
+        },
       },
     },
   },
