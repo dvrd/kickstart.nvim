@@ -12,8 +12,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
-        javascript = { 'eslint_d', { 'prettierd', 'prettier' } },
-        vue = { 'eslint_d' },
+        vue = { 'eslint' },
         zsh = { 'shfmt' },
         ['*'] = { 'codespell' },
         ['_'] = { 'trim_whitespace' },

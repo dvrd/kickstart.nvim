@@ -13,3 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
 require('lazy').setup 'plugins'
+
+vim.filetype.add {
+  extension = {
+    fs = 'glsl',
+  },
+}
