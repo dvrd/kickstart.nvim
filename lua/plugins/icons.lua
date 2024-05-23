@@ -2,9 +2,10 @@ return {
   {
     'nvim-tree/nvim-web-devicons',
     opts = {
+      strict = true,
       override_by_extension = {
         ['gleam'] = {
-          icon = '',
+          icon = ' ',
           color = '#ffaff3',
           name = 'Gleam',
         },
@@ -14,14 +15,21 @@ return {
           name = 'Odin',
         },
         ['pkg'] = {
-          icon = '󰏖',
+          icon = '󰏖 ',
           color = '#ffdd63',
           name = 'Octo',
         },
         ['adoc'] = {
-          icon = '󰬈',
+          icon = '󰬈 ',
           color = '#e40046',
           name = 'AsciiDoc',
+        },
+      },
+      override = {
+        ['Justfile'] = {
+          icon = ' ',
+          color = '#3f1ff3',
+          name = 'Justfile',
         },
       },
     },
