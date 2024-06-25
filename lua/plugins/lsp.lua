@@ -158,9 +158,6 @@ return {
             },
           },
         },
-        ols = {
-          cmd = { os.getenv 'OSS_PATH' .. '/ols/ols' },
-        },
         lua_ls = {
           settings = {
             Lua = {
@@ -228,6 +225,8 @@ return {
           end,
         },
       }
+
+      require('lspconfig').ols.setup {}
     end,
   },
   {

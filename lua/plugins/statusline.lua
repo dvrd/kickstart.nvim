@@ -4,12 +4,6 @@ return {
   opts = function()
     local colors = require('cyberdream.colors').default
     local cyberdream = require 'lualine.themes.cyberdream'
-    local copilot_colors = {
-      [''] = { fg = colors.grey, bg = colors.none },
-      ['Normal'] = { fg = colors.grey, bg = colors.none },
-      ['Warning'] = { fg = colors.red, bg = colors.none },
-      ['InProgress'] = { fg = colors.yellow, bg = colors.none },
-    }
     return {
       options = {
         component_separators = { left = ' ', right = ' ' },
@@ -51,24 +45,6 @@ return {
             require('lazy.status').updates,
             cond = require('lazy.status').has_updates,
             color = { fg = colors.green },
-          },
-          {
-            function()
-              local icon = ' '
-              local status = require('copilot.api').status.data
-              return icon .. (status.message or '')
-            end,
-            cond = function()
-              local ok, clients = pcall(vim.lsp.get_active_clients, { name = 'copilot', bufnr = 0 })
-              return ok and #clients > 0
-            end,
-            color = function()
-              if not package.loaded['copilot'] then
-                return
-              end
-              local status = require('copilot.api').status.data
-              return copilot_colors[status.status] or copilot_colors['']
-            end,
           },
           { 'diff' },
         },
