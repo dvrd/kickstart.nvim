@@ -17,5 +17,6 @@ require('lazy').setup 'plugins'
 vim.filetype.add {
   extension = {
     fs = 'glsl',
+    ['http'] = 'http',
   },
 }

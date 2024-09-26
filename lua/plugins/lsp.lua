@@ -2,13 +2,6 @@ return {
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
-      -- Automatically install LSPs and related tools to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -102,62 +95,6 @@ return {
         properties = { 'documentation', 'detail', 'additionalTextEdits' },
       }
       local servers = {
-        clangd = {
-          cmd = {
-            '/opt/homebrew/opt/llvm/bin/clangd',
-            '--offset-encoding=utf-16',
-            '--background-index',
-            '--pch-storage=memory',
-            '--all-scopes-completion',
-            '--pretty',
-            '--header-insertion=never',
-            '-j=4',
-            '--inlay-hints',
-            '--header-insertion-decorators',
-            '--function-arg-placeholders',
-            '--completion-style=detailed',
-          },
-          filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
-          root_dir = require('lspconfig').util.root_pattern 'src',
-          init_option = { fallbackFlags = { '-std=c++2a' } },
-        },
-        zls = {
-          cmd = {
-            'zls',
-            '--enable-debug-log',
-          },
-        },
-        bashls = {
-          filetypes = { 'sh', 'zsh', 'bash' },
-        },
-        gopls = {},
-        pyright = {},
-        rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              imports = {
-                granularity = {
-                  group = 'module',
-                },
-                prefix = 'self',
-              },
-              cargo = {
-                buildScripts = {
-                  enable = true,
-                },
-              },
-              procMacro = {
-                enable = true,
-              },
-              add_return_type = {
-                enable = true,
-              },
-              checkOnSave = {
-                command = 'clippy',
-              },
-            },
-          },
-        },
         lua_ls = {
           settings = {
             Lua = {
@@ -181,52 +118,28 @@ return {
             },
           },
         },
-        tsserver = {
-          init_options = {
-            preferences = {
-              includeInlayParameterNameHints = 'all',
-              includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
-              importModuleSpecifierPreference = 'non-relative',
-            },
-          },
-        },
-      }
-
-      -- Ensure the servers and tools above are installed
-      --  To check the current status of installed tools and/or manually install
-      --  other tools, you can run
-      --    :Mason
-      --
-      --  You can press `g?` for help in this menu
-      require('mason').setup()
-
-      -- You can add other tools here that you want Mason to install
-      -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
-      vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format lua code
-      })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-
-      require('mason-lspconfig').setup {
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for tsserver)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            require('lspconfig')[server_name].setup(server)
-          end,
-        },
       }
 
       require('lspconfig').ols.setup {}
+      require('lspconfig').clangd.setup {
+        cmd = {
+          '/opt/homebrew/opt/llvm/bin/clangd',
+          '--offset-encoding=utf-16',
+          '--background-index',
+          '--pch-storage=memory',
+          '--all-scopes-completion',
+          '--pretty',
+          '--header-insertion=never',
+          '-j=4',
+          '--inlay-hints',
+          '--header-insertion-decorators',
+          '--function-arg-placeholders',
+          '--completion-style=detailed',
+        },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+        root_dir = require('lspconfig').util.root_pattern 'src',
+        init_option = { fallbackFlags = { '-std=c++2a' } },
+      }
     end,
   },
   {
